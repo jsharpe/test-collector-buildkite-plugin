@@ -4,6 +4,7 @@ set -euo pipefail
 TOKEN_ENV_NAME="${BUILDKITE_PLUGIN_TEST_COLLECTOR_API_TOKEN_ENV_NAME:-BUILDKITE_ANALYTICS_TOKEN}"
 
 FILES_PATTERN="${BUILDKITE_PLUGIN_TEST_COLLECTOR_FILES:-}"
+FILES_PATTERN_BASEDIR="${BUILDKITE_PLUGIN_TEST_COLLECTOR_BASEDIR:-.}"
 
 FORMAT="${BUILDKITE_PLUGIN_TEST_COLLECTOR_FORMAT:-}"
 
@@ -86,7 +87,7 @@ fi
 matching_files=()
 while IFS=$'' read -r matching_file ; do
   matching_files+=("$matching_file")
-done < <(find . -path "./${FILES_PATTERN}")
+done < <(find ${FILES_PATTERN_BASEDIR} -path "./${FILES_PATTERN}")
 
 if [[ "${#matching_files[@]}" -eq "0" ]]; then
   echo "No files found matching '${FILES_PATTERN}'"

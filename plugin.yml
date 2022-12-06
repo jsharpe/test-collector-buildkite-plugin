@@ -6,6 +6,8 @@ requirements:
   - curl
 configuration:
   properties:
+    basedir:
+      type: string
     files:
       type: string
     format:

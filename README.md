@@ -55,9 +55,10 @@ steps:
 
 ## Properties
 
-* `files` — Required — String — Pattern of files to upload to Test Analytics, relative to the checkout path (`./` will be added to it). May contain `*` to match any number of characters of any type (unlike shell expansions, it will match `/` and `.` if necessary)
+* `files` — Required — String — Pattern of files to upload to Test Analytics, relative to the basedir path (`./` will be added to it). May contain `*` to match any number of characters of any type (unlike shell expansions, it will match `/` and `.` if necessary)
 * `format` — Required — String — Format of the file. Possible values: `"junit"`, `"json"`
 * `api-token-env-name` — Optional — String — Name of the environment variable that contains the Test Analytics API token. Default value: `"BUILDKITE_ANALYTICS_TOKEN"`
+* `basedir` — String — Base directory from which to search for files. Defaults to `.` i.e. the checkout directory. Default value: `"."`
 * `timeout` — Optional — Number — Maximum number of seconds to wait for each file to upload before timing out. Default value: `30`
 * `debug` — Optional — Boolean — Print debug information to the build output. Default value: `false`. Can also be enabled with the environment variable `BUILDKITE_ANALYTICS_DEBUG_ENABLED`.
 
